@@ -1,7 +1,7 @@
-import Image from "next/image";
-import {Button} from "@mui/material";
+import {InputDataForm} from "@/components/InputDataForm";
 
 export default function Home() {
+
   return (
     <main>
       <div>
@@ -10,9 +10,7 @@ export default function Home() {
           </div>
           <div>
               <div>
-                  <Button sx={{ backgroundColor: '#000000' }}>
-                      Click me
-                  </Button>
+                  <InputDataForm />
               </div>
           </div>
       </div>
