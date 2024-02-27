@@ -1,11 +1,10 @@
-
-import React, { useCallback } from 'react';
+import React, {useCallback} from 'react';
 
 interface DropzoneProps {
     onDrop: (files: File[]) => void;
 }
 
-const Dropzone: React.FC<DropzoneProps> = ({ onDrop }) => {
+const Dropzone: React.FC<DropzoneProps> = ({onDrop}) => {
     const handleDrop = useCallback(
         (e: React.DragEvent<HTMLDivElement>) => {
             e.preventDefault();
@@ -23,7 +22,15 @@ const Dropzone: React.FC<DropzoneProps> = ({ onDrop }) => {
         <div
             onDrop={handleDrop}
             onDragOver={handleDragOver}
-            style={{ width: '100%', height: '200px', border: '2px dashed #aaa' }}
+            style={{
+                width: '100%',
+                height: '100px',
+                border: '2px dashed #aaa',
+                display: 'flex',
+                justifyContent: 'center',
+                alignItems: 'center',
+                backgroundColor: 'rgb(213,213,213)',
+            }}
         >
             Drop files here
         </div>
