@@ -11,8 +11,8 @@ export const ImageContainer = ({imgFile}: ImageContainerProps) => {
                 <img
                     src="/assets/img/example.jpg"
                     alt="Description of my image"
-                    width={200}
-                    height={300}
+                    width={300}
+                    height={450}
                 />
             </div>
         );

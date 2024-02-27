@@ -26,7 +26,7 @@ export const InputDataForm = () => {
             <div>
                 <div>
                     <h2>Generated Images</h2>
-                    <div>
+                    <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
                         <ImageContainer imgFile={droppedFile}/>
                     </div>
                 </div>

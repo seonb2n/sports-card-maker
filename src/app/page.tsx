@@ -6,7 +6,7 @@ export default function Home() {
     <main>
       <div>
           <div className=" ">
-              Drag and drop Image Of Player
+             Create your own player Card!
           </div>
           <div>
               <div>
