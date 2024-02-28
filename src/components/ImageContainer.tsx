@@ -1,3 +1,4 @@
+import {useEffect} from "react";
 
 type ImageContainerProps = {
     imgFile?: File[],
@@ -5,9 +6,23 @@ type ImageContainerProps = {
 
 export const ImageContainer = ({imgFile}: ImageContainerProps) => {
 
+    const handleMouseMove = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        // 마우스 이벤트 처리 로직
+        event.currentTarget.style.transform = `perspective(550px) rotateY(${((-1 / 7) * event.clientX) + 75}deg) rotateX(${(-1 / 11) * event.clientY + 30}deg`;
+        const overlay = document.getElementsByClassName("overlay")[0] as HTMLElement;
+        overlay.style.filter = 'opacity(0.4)';
+        overlay.style.backgroundPosition = (event.clientX / 5 + event.clientY / 5) * 15 + 'px';
+    };
+
+    const handleMouseLeave = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
+        event.currentTarget.style.transform = `perspective(350px) rotateY(0deg) rotateX(0deg)`;
+        const overlay = document.getElementsByClassName("overlay")[0] as HTMLElement;
+        overlay.style.filter = 'opacity(0.2)';
+    }
+
     const ExampleImageContainer = () => {
         return (
-            <div>
+            <div className={"card"}>
                 <img
                     src="/assets/img/example.jpg"
                     alt="Description of my image"
@@ -20,18 +35,23 @@ export const ImageContainer = ({imgFile}: ImageContainerProps) => {
 
     return (
         <div>
-            {imgFile === undefined ?
-                <ExampleImageContainer/>
-                : (imgFile.map((file, index) => (
-                        <img
-                            key={index}
-                            src={URL.createObjectURL(file)}
-                            alt={`Uploaded Image ${index + 1}`}
-                            style={{width: '200px', height: 'auto', marginBottom: '10px'}}
-                        />
-                    ))
-                )
-            }
+            <div className="image-container" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} style={{transition: 'all 0.1s'}}>
+                <div className="overlay">
+
+                </div>
+                {imgFile === undefined ?
+                    <ExampleImageContainer/>
+                    : (imgFile.map((file, index) => (
+                            <img
+                                key={index}
+                                src={URL.createObjectURL(file)}
+                                alt={`Uploaded Image ${index + 1}`}
+                                style={{width: '300px', height: '450px', marginBottom: '10px'}}
+                            />
+                        ))
+                    )
+                }
+            </div>
         </div>
     );
 }
