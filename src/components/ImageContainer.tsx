@@ -2,9 +2,25 @@ import {useEffect} from "react";
 
 type ImageContainerProps = {
     imgFile?: File[],
+    backNumber: number,
+    name: string,
+    team: string,
+    attack: number,
+    defense: number,
+    physical: number,
+    position: string;
 }
 
-export const ImageContainer = ({imgFile}: ImageContainerProps) => {
+export const ImageContainer = ({
+                                   imgFile,
+                                   backNumber,
+                                   name,
+                                   team,
+                                   attack,
+                                   defense,
+                                   physical,
+                                   position
+                               }: ImageContainerProps) => {
 
     const handleMouseMove = (event: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
         // 마우스 이벤트 처리 로직
@@ -33,23 +49,38 @@ export const ImageContainer = ({imgFile}: ImageContainerProps) => {
         );
     }
 
+    const GeneratedImageContainer = () => {
+        return (
+            <div className={"card"}>
+                <div>
+                    {imgFile && imgFile.map((file, index) => (
+                        <img
+                            key={index}
+                            src={URL.createObjectURL(file)}
+                            alt={`Uploaded Image ${index + 1}`}
+                            style={{width: '300px', height: '450px', marginBottom: '10px'}}
+                        />
+                    ))
+                    }
+                </div>
+                <div style={{position: 'absolute', right: 0, }}>
+                    {team}
+                </div>
+            </div>
+        )
+    }
+
     return (
         <div>
-            <div className="image-container" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave} style={{transition: 'all 0.1s'}}>
+            <div className="image-container" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}
+                 style={{transition: 'all 0.1s'}}>
                 <div className="overlay">
 
                 </div>
                 {imgFile === undefined ?
                     <ExampleImageContainer/>
-                    : (imgFile.map((file, index) => (
-                            <img
-                                key={index}
-                                src={URL.createObjectURL(file)}
-                                alt={`Uploaded Image ${index + 1}`}
-                                style={{width: '300px', height: '450px', marginBottom: '10px'}}
-                            />
-                        ))
-                    )
+                    :
+                    <GeneratedImageContainer/>
                 }
             </div>
         </div>
