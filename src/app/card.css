@@ -4,6 +4,7 @@
 
 .overlay {
     position: absolute;
+    z-index: 100;
     width: 300px;
     height: 450px;
     background: linear-gradient(105deg,

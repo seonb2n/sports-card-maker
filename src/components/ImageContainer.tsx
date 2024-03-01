@@ -1,4 +1,5 @@
 import {useEffect} from "react";
+import {Typography} from "@mui/material";
 
 type ImageContainerProps = {
     imgFile?: File[],
@@ -49,7 +50,23 @@ export const ImageContainer = ({
         );
     }
 
+    const getColorForAverage = (average: number) => {
+        if (average >= 0 && average < 20) {
+            return "#FF0000";
+        } else if (average >= 20 && average < 40) {
+            return "#FFA500";
+        } else if (average >= 40 && average < 60) {
+            return "#FFFF00";
+        } else if (average >= 60 && average < 80) {
+            return "#008000";
+        } else {
+            return "#0000FF";
+        }
+    }
+
     const GeneratedImageContainer = () => {
+        const avg = Math.floor((attack + defense + physical) / 3);
+
         return (
             <div className={"card"}>
                 <div>
@@ -63,8 +80,132 @@ export const ImageContainer = ({
                     ))
                     }
                 </div>
-                <div style={{position: 'absolute', right: 0, }}>
-                    {team}
+                <div style={{
+                    position: 'absolute',
+                    bottom: '80px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    width: '100%',
+                    height: '20px',
+                }}>
+                    <div style={{
+                        width: '90%',
+                        backgroundColor: 'white',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                        borderTop: '3px solid black'
+                    }}>
+                        {team}
+                    </div>
+                </div>
+                <div style={{
+                    position: 'absolute',
+                    bottom: '30px',
+                    color: 'white',
+                    width: '100%',
+                    height: '50px',
+                    display: 'flex',
+                    justifyContent: 'center',
+                }}>
+                    <div style={{
+                        width: '90%',
+                        backgroundColor: 'black',
+                        display: 'flex',
+                        height: '100%',
+                        justifyContent: 'center',
+                        alignItems: 'center',
+                    }}>
+                        <div style={{fontWeight: '900', fontSize: '32px'}}>
+                            #{backNumber}
+                        </div>
+                        <div style={{marginLeft: '15px', fontWeight: '700'}}>
+                            {name}
+                        </div>
+                    </div>
+                </div>
+                <div style={{
+                    position: 'absolute',
+                    left: 0,
+                    top: '0',
+                    backgroundColor: 'black',
+                    width: '40px',
+                    height: '40px'
+                }}>
+                    <div style={{
+                        width: '100%',
+                        height: '100%',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}>
+                        <div style={{backgroundColor: 'white', padding: '5px', fontWeight: 600}}>
+                            {position.toUpperCase()}
+                        </div>
+                    </div>
+                </div>
+                <div style={{
+                    position: 'absolute',
+                    right: 0,
+                    top: '0',
+                    backgroundColor: getColorForAverage(avg),
+                    width: '70px',
+                    height: '70px',
+                    border: '1px solid black'
+                }}>
+                    <div style={{
+                        width: '100%',
+                        height: '100%',
+                        display: 'flex',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}>
+                        <div style={{backgroundColor: 'white', padding: '3px', fontWeight: 600, fontSize: '28px'}}>
+                            <div>
+                                <Typography variant='caption'
+                                            sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                                    Overall
+                                </Typography>
+                            </div>
+                            <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                                {avg}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div style={{
+                    position: 'absolute',
+                    right: 0,
+                    top: '70px',
+                    width: '60px',
+                    backgroundColor: "black",
+                    padding: '3px'
+                }}>
+                    <div style={{ backgroundColor: '#ce2d4f', color: 'white'}}>
+                        <Typography variant='caption'
+                                    sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+                            Attack
+                        </Typography>
+                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', fontWeight: '500'}}>
+                            {attack}
+                        </div>
+                    </div>
+                    <div style={{ backgroundColor: '#6244ff', marginTop: '3px', color: 'white'}}>
+                        <Typography variant='caption'
+                                    sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>                            Defense
+                        </Typography>
+                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', fontWeight: '500'}}>
+                            {defense}
+                        </div>
+                    </div>
+                    <div style={{ backgroundColor: '#23b5d3', marginTop: '3px', color: 'white'}}>
+                        <Typography variant='caption'
+                                    sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>                            Physical
+                        </Typography>
+                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', fontWeight: '500'}}>
+                            {physical}
+                        </div>
+                    </div>
                 </div>
             </div>
         )
@@ -75,7 +216,6 @@ export const ImageContainer = ({
             <div className="image-container" onMouseMove={handleMouseMove} onMouseLeave={handleMouseLeave}
                  style={{transition: 'all 0.1s'}}>
                 <div className="overlay">
-
                 </div>
                 {imgFile === undefined ?
                     <ExampleImageContainer/>

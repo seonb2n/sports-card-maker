@@ -135,7 +135,6 @@ export const InputDataForm = () => {
                             select
                             label="Select position"
                             variant="outlined"
-                            value={'sg'}
                             onChange={(e) => handleChangePosition(e.target.value)}
                         ><MenuItem value="sg">Shooting Guard</MenuItem>
                             <MenuItem value="pg">Point Guard</MenuItem>
