@@ -15,3 +15,4 @@ https://sports-card-maker.vercel.app/
 - 이미지 업로드
 - 데이터 입력 폼 추가
 - 카드에 홀로그램 효과 추가
+- 입력된 데이터로 카드 생성
