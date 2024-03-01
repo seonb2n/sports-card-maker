@@ -4,8 +4,8 @@ export default function Home() {
 
   return (
     <main>
-      <div>
-          <div className=" ">
+      <div style={{width: '1100px'}}>
+          <div>
              Create your own player Card!
           </div>
           <div>
