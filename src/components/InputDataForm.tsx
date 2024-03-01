@@ -52,10 +52,7 @@ export const InputDataForm = () => {
     }
 
     const handleChangePosition = (input: string) => {
-        const numericValue = parseInt(input, 10);
-        if (!isNaN(numericValue) && numericValue >= 0 && numericValue <= 100) {
-            setPhysical(numericValue);
-        }
+        setPosition(input);
     }
 
     const renderInputRow = (label: string, inputForm: ReactNode) => {
@@ -135,6 +132,7 @@ export const InputDataForm = () => {
                             select
                             label="Select position"
                             variant="outlined"
+                            value={position}
                             onChange={(e) => handleChangePosition(e.target.value)}
                         ><MenuItem value="sg">Shooting Guard</MenuItem>
                             <MenuItem value="pg">Point Guard</MenuItem>
