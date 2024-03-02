@@ -1,5 +1,5 @@
-import {useEffect} from "react";
 import {Typography} from "@mui/material";
+
 
 type ImageContainerProps = {
     imgFile?: File[],
@@ -181,28 +181,43 @@ export const ImageContainer = ({
                     backgroundColor: "black",
                     padding: '3px'
                 }}>
-                    <div style={{ backgroundColor: '#ce2d4f', color: 'white'}}>
+                    <div style={{backgroundColor: '#ce2d4f', color: 'white'}}>
                         <Typography variant='caption'
                                     sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
                             Attack
                         </Typography>
-                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', fontWeight: '500'}}>
+                        <div style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            fontWeight: '500'
+                        }}>
                             {attack}
                         </div>
                     </div>
-                    <div style={{ backgroundColor: '#6244ff', marginTop: '3px', color: 'white'}}>
+                    <div style={{backgroundColor: '#6244ff', marginTop: '3px', color: 'white'}}>
                         <Typography variant='caption'
-                                    sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>                            Defense
+                                    sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}> Defense
                         </Typography>
-                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', fontWeight: '500'}}>
+                        <div style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            fontWeight: '500'
+                        }}>
                             {defense}
                         </div>
                     </div>
-                    <div style={{ backgroundColor: '#23b5d3', marginTop: '3px', color: 'white'}}>
+                    <div style={{backgroundColor: '#23b5d3', marginTop: '3px', color: 'white'}}>
                         <Typography variant='caption'
-                                    sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}>                            Physical
+                                    sx={{display: 'flex', justifyContent: 'center', alignItems: 'center'}}> Physical
                         </Typography>
-                        <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', fontWeight: '500'}}>
+                        <div style={{
+                            display: 'flex',
+                            justifyContent: 'center',
+                            alignItems: 'center',
+                            fontWeight: '500'
+                        }}>
                             {physical}
                         </div>
                     </div>
