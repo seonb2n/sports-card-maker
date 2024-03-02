@@ -3,7 +3,9 @@
 import Dropzone from "@/components/Dropzone";
 import {ChangeEvent, ReactNode, useState} from "react";
 import {ImageContainer} from "@/components/ImageContainer";
-import {MenuItem, TextField, Typography} from "@mui/material";
+import {Button, MenuItem, TextField, Typography} from "@mui/material";
+import domtoimage from "dom-to-image";
+import {saveAs} from "file-saver";
 
 export const InputDataForm = () => {
     const [droppedFile, setDroppedFile] = useState<File[]>();
@@ -68,6 +70,13 @@ export const InputDataForm = () => {
         );
     }
 
+    const handleClickDownloadButton = () => {
+        const node = document.getElementsByClassName('image-container')[0];
+        domtoimage.toPng(node).then(function (dataUrl: any) {
+            saveAs(dataUrl, 'my-card.png');
+        })
+    }
+
     return (
         <div>
             <div>
@@ -84,6 +93,11 @@ export const InputDataForm = () => {
                             physical={physical}
                             position={position}
                         />
+                    </div>
+                </div>
+                <div>
+                    <div style={{display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '10px'}}>
+                        <Button variant="outlined" disabled={!droppedFile} onClick={handleClickDownloadButton}>이미지로 다운로드</Button>
                     </div>
                 </div>
                 <div>
